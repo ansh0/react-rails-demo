@@ -22,6 +22,31 @@ class Users extends React.Component {
       .catch(() => this.props.history.push("/"));
   }
 
+  deleteUser = (id) => {
+    const url = `/api/v1/users/${id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Network response was not ok.");
+    })
+    .then(() => {
+      let users = this.state.users.filter(user => {
+        return user.id !== id 
+      })
+      this.setState({users: users})
+    })
+    .catch(error => console.log(error.message));
+  }
+
   render() {
     const { users } = this.state;
 
@@ -59,15 +84,15 @@ class Users extends React.Component {
                       <td>{user.last_name}</td>
                       <td>{user.address}</td>
                       <td>
-                        <Link to="/user" className="btn custom-button border-dark">
+                        <Link to={`/user/${user.id}/edit`} className="btn btn-primary border-dark text-white ml-2">
                           Edit
                         </Link> |
-                        <Link to="/user" className="btn custom-button border-dark">
+                        <Link to={`/user/${user.id}`} className="btn btn-success border-dark text-white mr-2 ml-2">
                           Show
                         </Link> |
-                        <Link to="/user" className="btn custom-button border-dark">
+                        <button type="button" className="btn btn-danger text-white ml-2" onClick={() => this.deleteUser(user.id)}>
                           Delete
-                        </Link>                                                
+                        </button>                                            
                       </td>
                     </tr>)
                   })
