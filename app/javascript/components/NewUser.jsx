@@ -90,13 +90,13 @@ class NewUser extends React.Component {
                   required
                   onChange={this.onChange}
                 />
-              </div>                            
-              <button type="submit" className="btn custom-button border-dark ml-3 mt-3">
+              </div>
+              <button type="submit" className="btn btn-success border-dark text-white mr-4">
                 Create User
               </button>
-              <Link to="/Users" className="btn custom-button border-dark mt-3">
+              <Link to="/Users" className="btn custom-button border-dark">
                 Back to Users
-              </Link>
+              </Link>              
             </form>
           </div>
         </div>
