@@ -60,7 +60,7 @@ class Users extends React.Component {
                 </Link>
               </div>
               <div className="text-right">
-                <Link to="/user" className="btn custom-button border-dark">
+                <Link to="/user" className="btn btn-success border-dark text-white">
                   Create New User
                 </Link>
               </div>
