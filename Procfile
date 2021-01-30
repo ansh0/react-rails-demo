@@ -1,2 +1,2 @@
-web: bin/rails server -b 0.0.0.0
-front: bin/webpack
+web: rails server
+webpack: bundle exec bin/webpack-dev-server
