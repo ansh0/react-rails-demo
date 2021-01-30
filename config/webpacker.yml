@@ -95,11 +95,3 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
-
-  # Reference: https://webpack.js.org/configuration/dev-server/
-  dev_server:
-    https: false
-    headers:
-      'Access-Control-Allow-Origin': '*'
-    watch_options:
-      ignored: '**/node_modules/**'
