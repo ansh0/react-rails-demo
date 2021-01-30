@@ -1,0 +1,17 @@
+{
+  "environments": {
+    "test": {
+      "env": {  "POSTGRESQL_VERSION": "9.6"  },
+      "buildpacks": [
+        { "url": "heroku/nodejs" },
+        { "url": "heroku/ruby" }
+      ],
+      "addons":[
+        "heroku-postgresql:in-dyno"
+      ],
+      "scripts": {
+        "test": "bundle exec rubocop && bundle exec rake test"
+      }
+    }
+  }
+}
